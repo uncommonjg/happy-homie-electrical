@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book a Service Call | Happy Homie Electrical | Franklin TN</title>
+  <meta name="description" content="Book a residential electrical service call in Franklin or Williamson County, TN. We respond within the hour. Flat-rate pricing, licensed and insured."/>
+  <link rel="canonical" href="https://happyhomieelectrical.com/book.html"/>
+  <meta property="og:title" content="Book a Service Call | Happy Homie Electrical"/>
+  <meta property="og:description" content="Request a service call in Franklin or Williamson County, TN. We respond fast, show up on time, and quote before we start."/>
+  <meta property="og:url" content="https://happyhomieelectrical.com/book.html"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fredoka+One&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ── ROOT ── */
+    :root {
+      --black:    #000000;
+      --white:    #FFFFFF;
+      --charcoal: #1C1C1C;
+      --cream:    #F5F0E8;
+      --electric: #14B8A6;
+      --navy:     #0A1929;
+      --rule:     #C8C2B6;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow Condensed', sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 112px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.3s, border-bottom 0.3s;
+    }
+    nav.scrolled {
+      background: var(--black);
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; }
+    .nav-logo img { height: 104px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--electric);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #0d9488; }
+
+    /* ── SHARED ── */
+    .section-label {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--electric);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--electric);
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      min-height: 52vh;
+      background: var(--black) url('./handshake.jpg') center 30% / cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 72px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.75) 100%);
+    }
+    .page-hero-content { position: relative; z-index: 1; max-width: 720px; }
+    .page-h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(48px, 6.5vw, 92px);
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .page-h1 em { font-style: normal; color: var(--electric); }
+    .page-sub {
+      font-family: 'Barlow', sans-serif;
+      font-size: 18px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      max-width: 460px;
+    }
+
+    /* ── BOOKING SECTION ── */
+    #booking {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 600px;
+    }
+
+    /* Form column */
+    .book-form-col {
+      background: var(--cream);
+      padding: 72px 64px;
+    }
+    .book-form-col h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(28px, 3vw, 42px);
+      color: var(--black);
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+    .book-form-col .form-intro {
+      font-family: 'Barlow', sans-serif;
+      font-size: 15px;
+      color: #666;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 28px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 8px;
+    }
+    .form-control {
+      background: transparent;
+      border: none;
+      border-bottom: 1.5px solid var(--rule);
+      padding: 10px 0;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--black);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .form-control:focus { border-bottom-color: var(--electric); }
+    .form-control::placeholder { color: #bbb; }
+    select.form-control {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23999' d='M0 0l6 8 6-8z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 4px center;
+      padding-right: 24px;
+    }
+    textarea.form-control {
+      resize: vertical;
+      min-height: 100px;
+      line-height: 1.5;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--electric);
+      color: var(--white);
+      border: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+    .btn-submit:hover { background: #0d9488; }
+    .form-note {
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    /* Success state */
+    #form-success {
+      display: none;
+      text-align: center;
+      padding: 40px 0;
+    }
+    .success-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(20,184,166,0.12);
+      border: 1px solid rgba(20,184,166,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 24px;
+    }
+    #form-success h3 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 32px;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+    #form-success p {
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Info column */
+    .book-info-col {
+      background: var(--charcoal);
+      padding: 72px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .next-steps { margin-bottom: 48px; }
+    .next-steps-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--electric);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .next-steps-title::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--electric);
+    }
+    .step-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .step-item {
+      display: flex;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      align-items: flex-start;
+    }
+    .step-item:last-child { border-bottom: none; }
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: rgba(20,184,166,0.4);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 36px;
+    }
+    .step-text {}
+    .step-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.3px;
+      margin-bottom: 3px;
+    }
+    .step-desc {
+      font-family: 'Barlow', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.5;
+    }
+
+    .book-contact {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 32px;
+    }
+    .book-contact-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 16px;
+    }
+    .book-contact-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .contact-link {
+      font-family: 'Fredoka One', cursive;
+      font-size: 26px;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--electric); }
+    .contact-link-sub {
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 2px;
+    }
+
+    /* ── TRUST STRIP ── */
+    .trust-strip {
+      background: var(--black);
+      padding: 48px 72px;
+      display: flex;
+      gap: 0;
+      border-top: 1px solid #111;
+    }
+    .trust-item {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding-right: 40px;
+      border-right: 1px solid #1e1e1e;
+      margin-right: 40px;
+    }
+    .trust-item:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+    .trust-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--electric);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .trust-text {}
+    .trust-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .trust-desc {
+      font-family: 'Barlow', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: #050505; padding: 0 72px; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      padding: 64px 0;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 3px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .footer-tagline {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .footer-license {
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+    }
+    .footer-copy {
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.15);
+    }
+    .footer-location {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.15);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 0 32px; }
+      .nav-links { display: none; }
+      .page-hero { padding: 0 40px 56px; }
+      #booking { grid-template-columns: 1fr; }
+      .book-form-col { padding: 56px 40px; }
+      .book-info-col { padding: 56px 40px; }
+      .trust-strip { flex-direction: column; padding: 40px; gap: 0; }
+      .trust-item {
+        border-right: none;
+        padding-right: 0;
+        margin-right: 0;
+        border-bottom: 1px solid #1e1e1e;
+        padding-bottom: 24px;
+        margin-bottom: 24px;
+      }
+      .trust-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+      footer { padding: 0 40px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 560px) {
+      nav { padding: 0 20px; }
+      .page-hero { padding: 0 24px 48px; }
+      .book-form-col { padding: 48px 24px; }
+      .book-info-col { padding: 48px 24px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .trust-strip { padding: 32px 24px; }
+      footer { padding: 0 24px; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="/" class="nav-logo">
+      <img src="./logo.png" alt="Happy Homie Electrical"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/#process">How It Works</a></li>
+      <li><a href="/#areas">Service Areas</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+    </ul>
+    <a href="/book.html" class="nav-cta">Book Online</a>
+  </nav>
+
+  <!-- ══ PAGE HERO ══ -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="section-label">Franklin &amp; Williamson County, TN</div>
+      <h1 class="page-h1">BOOK A<br/><em>SERVICE CALL</em></h1>
+      <p class="page-sub">We'll confirm within the hour. Flat-rate quote before we start a single thing.</p>
+    </div>
+  </section>
+
+  <!-- ══ BOOKING SECTION ══ -->
+  <section id="booking">
+
+    <!-- FORM COLUMN -->
+    <div class="book-form-col">
+      <div class="section-label">Request a Visit</div>
+      <h2>Tell us what's going on.</h2>
+      <p class="form-intro">Fill this out and we'll reach back out within the hour to confirm. If it's urgent, call or text directly.</p>
+
+      <form id="booking-form" action="#" onsubmit="handleSubmit(event)" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Jane Smith" required/>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="(615) 555-0000" required/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="jane@email.com"/>
+        </div>
+
+        <div class="form-group">
+          <label for="service">What do you need?</label>
+          <select id="service" name="service" class="form-control" required>
+            <option value="" disabled selected>Select a service type</option>
+            <option>Outlet or switch issue</option>
+            <option>Ceiling fan or light fixture</option>
+            <option>Smart switch or thermostat install</option>
+            <option>Lighting upgrade (recessed, under-cabinet, etc.)</option>
+            <option>Flickering lights or power loss</option>
+            <option>Breaker issue</option>
+            <option>Safety inspection or audit</option>
+            <option>Pre-listing inspection</option>
+            <option>Bundled package</option>
+            <option>Something else</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" name="date" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <label for="time">Preferred Time</label>
+            <select id="time" name="time" class="form-control">
+              <option value="" disabled selected>Time of day</option>
+              <option>Morning (7am – 11am)</option>
+              <option>Midday (11am – 2pm)</option>
+              <option>Afternoon (2pm – 6pm)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Anything else we should know?</label>
+          <textarea id="notes" name="notes" class="form-control" placeholder="Describe the issue, address, anything relevant…"></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Request Appointment →</button>
+        <p class="form-note">We'll confirm within the hour. No credit card required.</p>
+      </form>
+
+      <div id="form-success">
+        <div class="success-icon">✓</div>
+        <h3>Got it. We'll be in touch soon.</h3>
+        <p>Expect a call or text within the hour to confirm your appointment. If it's urgent, call us directly at (615) 555-0000.</p>
+      </div>
+    </div>
+
+    <!-- INFO COLUMN -->
+    <div class="book-info-col">
+      <div class="next-steps">
+        <div class="next-steps-title">What Happens Next</div>
+        <ul class="step-list">
+          <li class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <div class="step-title">You submit this form</div>
+              <div class="step-desc">Takes 60 seconds. We get a notification immediately.</div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <div class="step-title">We call or text to confirm</div>
+              <div class="step-desc">Within the hour. We'll lock in a time that works for you.</div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <div class="step-title">We show up on time</div>
+              <div class="step-desc">Branded truck, clean uniform. We treat your house with respect.</div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-text">
+              <div class="step-title">Flat-rate quote before we start</div>
+              <div class="step-desc">You approve the price. Then we get to work.</div>
+            </div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-text">
+              <div class="step-title">Clean work, clean exit</div>
+              <div class="step-desc">Job done. House cleaner than we found it. Digital invoice sent.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="book-contact">
+        <div class="book-contact-label">Rather call or text?</div>
+        <div class="book-contact-options">
+          <div>
+            <a href="tel:+16155550000" class="contact-link">(615) 555-0000</a>
+            <div class="contact-link-sub">Call or text anytime. We respond fast.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══ TRUST STRIP ══ -->
+  <div class="trust-strip">
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      <div class="trust-text">
+        <div class="trust-title">Licensed &amp; Insured</div>
+        <div class="trust-desc">Tennessee LLE license. General liability and commercial auto on every job.</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      <div class="trust-text">
+        <div class="trust-title">Flat-Rate Pricing</div>
+        <div class="trust-desc">You know the price before we start. No hourly billing, no surprises.</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      <div class="trust-text">
+        <div class="trust-title">Family Owned</div>
+        <div class="trust-desc">Joel and Alex are your neighbors. Your dollar stays local.</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      <div class="trust-text">
+        <div class="trust-title">Williamson County</div>
+        <div class="trust-desc">Franklin, Brentwood, Nolensville, Spring Hill, Thompson's Station.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">HAPPY HOMIE ELECTRICAL</div>
+        <div class="footer-tagline">Family Owned &amp; Operated · Your Neighbor's Electrician</div>
+        <div class="footer-license">Licensed &amp; Insured · Franklin, TN · Williamson County</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/#areas">Service Areas</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/book.html">Book Online</a></li>
+      </ul>
+      <ul class="footer-links">
+        <li><a href="tel:+16155550000">Call Us</a></li>
+        <li><a href="sms:+16155550000">Text Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Happy Homie Electrical LLC · All rights reserved</div>
+      <div class="footer-location">Franklin · Williamson County · Tennessee</div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll behavior
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Fade-up on scroll
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // Form placeholder submit handler
+    // TODO: Replace with Formspree action (action="https://formspree.io/f/YOUR_ID")
+    //       and remove this function when booking backend is wired up.
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('booking-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
