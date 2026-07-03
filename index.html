@@ -745,24 +745,24 @@
       font-size: 18px;
       flex-shrink: 0;
     }
-    .why-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      background: #333;
+    .why-photo {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      min-height: 480px;
     }
-    .why-stat {
-      background: var(--black);
-      padding: 36px 32px;
+    .why-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      position: absolute;
+      top: 0; left: 0;
     }
-    .why-stat .big {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 52px;
-      color: var(--white);
-      line-height: 1;
-      letter-spacing: 1px;
+    .why-photo-dummy {
+      padding-top: 100%;
     }
-    .why-stat .big em { font-style: normal; color: var(--electric); }
     .why-stat .small {
       font-size: 10px;
       font-weight: 700;
@@ -1080,7 +1080,7 @@
 
       /* Why */
       .why-grid { grid-template-columns: 1fr; gap: 40px; }
-      .why-stats { grid-template-columns: 1fr 1fr; }
+      .why-photo { min-height: 360px; }
       .why-bg { font-size: 160px; }
 
       /* Areas */
@@ -1117,7 +1117,7 @@
       .process-steps { grid-template-columns: 1fr; gap: 28px; }
 
       /* Why + Areas */
-      .why-stats { grid-template-columns: 1fr 1fr; }
+      .why-photo { min-height: 280px; }
       .areas-grid { grid-template-columns: 1fr; }
 
       /* CTA */
@@ -1429,23 +1429,9 @@
           <li>Online booking, no phone call required</li>
         </ul>
       </div>
-      <div class="why-stats fade-up">
-        <div class="why-stat">
-          <div class="big">&lt;<em>5</em></div>
-          <div class="small">Minute<br/>response time</div>
-        </div>
-        <div class="why-stat">
-          <div class="big"><em>2</em></div>
-          <div class="small">Trucks in<br/>Williamson County</div>
-        </div>
-        <div class="why-stat">
-          <div class="big"><em>$0</em></div>
-          <div class="small">Flat-rate pricing,<br/>always</div>
-        </div>
-        <div class="why-stat">
-          <div class="big">5★</div>
-          <div class="small">Service is the<br/>only standard</div>
-        </div>
+      <div class="why-photo fade-up">
+        <div class="why-photo-dummy"></div>
+        <img src="handshake.jpg" alt="Joel and Alex greeting a homeowner" loading="lazy" />
       </div>
     </div>
   </section>
